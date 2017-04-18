@@ -1,0 +1,27 @@
+                            | # Execution begins at address 0 
+0x000:                      | 	.pos 0
+0x000: 30f40002000000000000 | 	irmovq stack, %rsp  	# Set up stack pointer
+0x00a: 801400000000000000   | 	call main		# Execute main program
+0x013: 00                   | 	halt			# Terminate program 
+                            | 	
+0x014:                      | main:
+0x014: 30f50a00000000000000 | 	irmovq $10,%rbp
+0x01e: 30f70400000000000000 | 	irmovq $4, %rdi
+0x028: 803200000000000000   | 	call fun
+0x031: 90                   | 	ret
+                            | 
+                            | # long fun(int count)
+                            | # count in $rdi
+0x032:                      | fun:
+0x032: a05f                 | 	pushq %rbp
+0x034: 6300                 | 	xorq %rax, %rax		#set rax to 0
+0x036: 30f81400000000000000 | 	irmovq $20, %r8		
+0x040: 2085                 | 	rrmovq %r8, %rbp
+0x042: 6150                 | 	subq %rbp, %rax		#result is rax is negative
+0x044: 2170                 | 	cmovle %rdi, %rax	#if <=, then rax = 4
+0x046: b05f                 | 	popq %rbp			#restore callee reg
+0x048: 90                   | 	ret
+                            | 	
+                            | # Stack starts here and grows to lower addresses
+0x200:                      | 	.pos 0x200
+0x200:                      | stack:
