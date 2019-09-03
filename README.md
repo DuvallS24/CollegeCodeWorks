@@ -13,4 +13,4 @@ An implementation of a CPU with Logisim.
 ### PriorityQueue
 An implementation of huffman encoding using both a min-heap and a priority queue.
 ### Camp DU
-First game created during Game Design course offered at Denison University.  Can be located on this page: http://personal.denison.edu/~lalla/games/
+First game created during Game Design course offered at Denison University.  Can be located on this page: http://personal.denison.edu/~lalla/games/spring15.html
